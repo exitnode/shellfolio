@@ -29,7 +29,7 @@ do
                 change1h=$(echo $result | jq ".[0].percent_change_1h" | xargs printf "%.*f\n" 2)
                 change24h=$(echo $result | jq ".[0].percent_change_24h" | xargs printf "%.*f\n" 2)
                 change7d=$(echo $result | jq ".[0].percent_change_7d" | xargs printf "%.*f\n" 2)
-                usd=$(echo $result | jq ".[0].price_usd" | xargs printf "%.*f\n" 2)
+                usd=$(echo $result | jq ".[0].price_usd" | xargs printf "%.*f\n" 8)
 
                 col1h=$(colorize $change1h)
                 col24h=$(colorize $change24h)
@@ -42,14 +42,15 @@ do
                 fi
 
                 value=$(echo "scale=2; $amount*$usd" | bc)
+                usd=$(echo "scale=2; $usd" | bc)
                 total=$(echo "scale=2; $value+$total" | bc)
 
-                printf "$neutral%6s %10s $col1h%10s $col24h%10s $col7d%10s $neutral%10s %10s\n" "$symbol" "\$$usd" "$change1h%" "$change24h%" "$change7d%" "$amount" "\$$value"
+                printf "$neutral%6s %10.2f $col1h%10s $col24h%10s $col7d%10s $neutral%10s %10.2f\n" "$symbol" "$usd" "$change1h%" "$change24h%" "$change7d%" "$amount" "$value"
         fi
 
 done
 
 printf "${colwidths}" "------" "----------" "----------" "----------" "----------" "----------" "----------"
-printf "%72s\n" "\$$total"
+printf "%72.2f\n" "$total"
 
 exit 0
