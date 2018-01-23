@@ -1,4 +1,4 @@
-COINS="ethereum ripple stellar iota cardano digibyte neo nem dogecoin"
+COINS="ethereum ripple stellar iota cardano digibyte neo nem dogecoin bitcoin-cash"
 ETH=4.3
 XRP=234
 XLM=3984
@@ -8,3 +8,4 @@ DGB=9821
 NEO=10.3
 XEM=821
 DOGE=987324
+BCH=20
