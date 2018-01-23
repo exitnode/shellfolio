@@ -42,4 +42,4 @@ XEM=821
 DOGE=987324
 ```
 
-The variable $COINS defines all coins you want to be listed, must be referenced by their name. All other variables are coins you own (must be the ticker name), their value is the amount you have.
+The variable $COINS defines all coins you want to be listed, must be referenced by their name. All other variables are coins you own (must be the ticker name), their value represents the amount you have.
