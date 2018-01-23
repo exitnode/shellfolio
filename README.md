@@ -27,7 +27,7 @@ Symbol        USD     +/- 1h    +/- 24h     +/- 7d     Amount      Value
 
 # Configuration
 
-Edit the file _~/.shellfolio_like this:
+Edit the file _~/.shellfolio_ like this:
 
 ```
 COINS="ethereum ripple stellar iota cardano digibyte neo nem dogecoin"
