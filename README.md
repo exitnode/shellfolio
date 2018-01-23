@@ -2,7 +2,7 @@
 
 shellfolio is a cryptocurrency portfolio manager and price tracker for the CLI. It gathers it's information from coinmarketcap.com, calculates what your coins are worth and presents the results on the shell:
 
-![screenshot](/screenshot.png?raw=true "screenshot")
+![screenshot](/screenshot_cli.png?raw=true "screenshot")
 
 # Installation
 
