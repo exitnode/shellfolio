@@ -5,7 +5,7 @@
 minus=$(tput setaf 1)
 plus=$(tput setaf 2)
 neutral=$(tput sgr0)
-colwidths="$neutral%6s %10s %10s %10s %10s %10s %10s\n"
+colwidths="$neutral%6s %15s %8s %8s %8s %12s %12s\n"
 total=0
 
 colorize() {
@@ -19,7 +19,7 @@ colorize() {
 
 
 printf "${colwidths}" "Symbol" "USD" "+/- 1h" "+/- 24h" "+/- 7d" "Amount" "Value"
-printf "${colwidths}" "------" "----------" "----------" "----------" "----------" "----------" "----------"
+printf "${colwidths}" "------" "---------------" "--------" "--------" "--------" "------------" "------------"
 
 for coin in $COINS
 do
@@ -45,12 +45,12 @@ do
                 usd=$(echo "scale=2; $usd" | bc)
                 total=$(echo "scale=2; $value+$total" | bc)
 
-                printf "$neutral%6s %10.2f $col1h%10s $col24h%10s $col7d%10s $neutral%10s %10.2f\n" "$symbol" "$usd" "$change1h%" "$change24h%" "$change7d%" "$amount" "$value"
+                printf "$neutral%6s %15.6f $col1h%8s $col24h%8s $col7d%8s $neutral%12s %12.2f\n" "$symbol" "$usd" "$change1h%" "$change24h%" "$change7d%" "$amount" "$value"
         fi
 
 done
 
-printf "${colwidths}" "------" "----------" "----------" "----------" "----------" "----------" "----------"
-printf "%72.2f\n" "$total"
+printf "${colwidths}" "------" "---------------" "--------" "--------" "--------" "------------" "------------"
+printf "%75.2f\n" "$total"
 
 exit 0
