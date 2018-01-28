@@ -31,3 +31,7 @@ BCH=20:0
 
 The variable $COINS defines all coins you want to be listed, must be referenced by their name. All other variables are coins you own (must be the ticker name), their value represents the amount you have. Insert how much you invested (in USD)
 after ":" in order to see your gains and losses.
+
+In summary the variable definiton for each coin is:
+
+$SYMBOL=amount:investment
