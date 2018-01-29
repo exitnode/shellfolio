@@ -96,6 +96,8 @@ do
         if [ "${#amount[$i]}" -gt "$maxamountw" ]; then maxamountw=${#amount[$i]};fi
         if [ "${#value[$i]}" -gt "$maxvaluew" ]; then maxvaluew=${#value[$i]};fi
         if [ "${#gain[$i]}" -gt "$maxgainw" ]; then maxgainw=${#gain[$i]};fi
+        if [ "${#totalgain}" -gt "$maxgainw" ]; then maxgainw=${#totalgain};fi
+        if [ "${#totalvalue}" -gt "$maxvaluew" ]; then maxvaluew=${#totalvalue};fi
 
         ((++i))
 done
