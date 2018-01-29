@@ -2,9 +2,11 @@
 
 . ~/.shellfolio
 
+# cell colors
 minus=$(tput setaf 1)
 plus=$(tput setaf 2)
 neutral=$(tput sgr0)
+# initial values
 totalvalue=0
 totalgain=0
 maxsymbolw=3
@@ -16,6 +18,7 @@ maxamountw=6
 maxvaluew=5
 maxgainw=5
 linewidth=80
+# arrays
 declare -a resultarr
 declare -a symbol
 declare -a change1h
@@ -61,6 +64,7 @@ do
         col1h[$i]=$(colorize ${change1h[$i]})
         col24h[$i]=$(colorize ${change24h[$i]})
         col7d[$i]=$(colorize ${change7d[$i]})
+
         # check if $symbol is set, split into $amount and $paid
         if [ -z ${!symbol[$i]} ]; then
                 amount[$i]=0
@@ -96,6 +100,7 @@ do
         ((++i))
 done
 
+# add 1 space for % symbol
 ((++maxchange1hw))
 ((++maxchange24hw))
 ((++maxchange7dw))
@@ -103,8 +108,7 @@ done
 linewidth=$((8 + $maxsymbolw + $maxusdw + $maxchange1hw + $maxchange24hw + $maxchange7dw + $maxamountw + $maxvaluew + $maxgainw))
 
 # print table header captions
-usdtemp=$(($maxusdw + 1))
-printf "$neutral%${maxsymbolw}s %${usdtemp}s %${maxchange1hw}s %${maxchange24hw}s %${maxchange7dw}s %${maxamountw}s %${maxvaluew}s %${maxgainw}s\n" "Coin" "USD" "1h" "24h" "7d" "Amount" "Value" "Gain"
+printf "$neutral%${maxsymbolw}s  %${maxusdw}s %${maxchange1hw}s %${maxchange24hw}s %${maxchange7dw}s %${maxamountw}s %${maxvaluew}s %${maxgainw}s\n" "Coin" "USD" "1h" "24h" "7d" "Amount" "Value" "Gain"
 
 # print table header line
 seq -s- ${linewidth}|tr -d '[:digit:]'
@@ -114,7 +118,7 @@ printf "\n"
 i=0
 for result in "${resultarr[@]}"
 do
-        printf "$neutral%${maxsymbolw}s %${maxusdw}.6f ${col1h[$i]}%${maxchange1hw}s ${col24h[$i]}%${maxchange24hw}s ${col7d[$i]}%${maxchange7dw}s $neutral%${maxamountw}s %${maxvaluew}.2f ${colgain[$i]}%${maxgainw}.2f$neutral\n" "${symbol[$i]}" "${usd[$i]}" "${change1h[$i]}%" "${change24h[$i]}%" "${change7d[$i]}%" "${amount[$i]}" "${value[$i]}" "${gain[$i]}"
+        printf "$neutral%${maxsymbolw}s  %${maxusdw}.6f ${col1h[$i]}%${maxchange1hw}s ${col24h[$i]}%${maxchange24hw}s ${col7d[$i]}%${maxchange7dw}s $neutral%${maxamountw}s %${maxvaluew}.2f ${colgain[$i]}%${maxgainw}.2f$neutral\n" "${symbol[$i]}" "${usd[$i]}" "${change1h[$i]}%" "${change24h[$i]}%" "${change7d[$i]}%" "${amount[$i]}" "${value[$i]}" "${gain[$i]}"
         ((++i))
 done
 
